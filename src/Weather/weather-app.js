@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-const WeatherApp=()=> {
+const SearchApp=()=> {
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
 
@@ -50,4 +50,4 @@ const WeatherApp=()=> {
   );
 }
 
-export default WeatherApp;
+export default SearchApp;

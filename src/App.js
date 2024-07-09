@@ -1,7 +1,7 @@
 import React from 'react';
 import "./App.css";
-import SearchBar from './Weather/SearchBar';
-import WeatherApp from './Weather/weather-app';
+import WeatherApp from './Weather/SearchBar';
+
 
 function App() {
 

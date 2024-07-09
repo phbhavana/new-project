@@ -1,53 +1,55 @@
-import { useState } from "react";
-import axios from "react";
-import React from 'react';
-import "./SearchBar.css";
-const SearchBar=()=>{
-  const [search, setSearch] = useState("");
-  const [weather, setWeather] = useState("");
-  const [error,setError] = useState("");
-  const [city,setCity] = useState("");
-      const fetchWeatherData = async () => {
-      try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${'34f19ded3d6d17325e99ccf9aceaa809'}&units=metric`);
-        setWeather(response.data);
-        setError(null);
-      } catch (error) {
-        setError('City not found. Please enter a valid city name.');
-        setWeather(null);
-      }
-    };
-    const handleButtonClick =() => {
-      if(city.trim()!==""){
-        fetchWeatherData();}
-      };
-
+import React, { useState } from "react";
+import axios from "axios";
+const WeatherApp = () => {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
+  const API_KEY = "34f19ded3d6d17325e99ccf9aceaa809";
+  const fetchWeatherData = async () => {
+    console.log(city,'city');
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      console.log("API response:", response.data);
+      setWeather(response.data);
+      
+      setError(null);
+    } catch (error) {
+      console.error(
+        "API call error:",
+        error.response ? error.response.data : error.message
+      );
+      setError("City not found. Please enter a valid city name.");
+      setWeather(null);
+    }
+  };
+  console.log(weather);
+  const handleButtonClick = () => {
+    if (city.trim() !== "") {
+      fetchWeatherData();
+    } else {
+      setError("Please enter a city name.");
+    }
+  };
   return (
-    <div className="App">
-      <div className="App-container">
-        <h1>Weather App</h1>
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="Enter city/town..."
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button onClick={handleButtonClick}>Search</button>
+    <div className="weather-app">
+      <h2>Weather App</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter city name"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button onClick={handleButtonClick}>Get Weather</button>
+      </div>
+      {error && <p className="error">{error}</p>}
+      <h1>City:{weather?.name}</h1>
+      <h3>Temperature:{weather?.main.temp}</h3>
+      <p> Humidity:{weather?.main.humidity}</p>
 
-         
-          <div>
-            <p>{city.name}</p>
-
-            <p>{weather.main.temp}°C</p>
-
-            <p>{weather.weather[0].main}</p>
-            <p>({weather.weather[0].description})</p>  
-          </div>
-    
-        </div>
-          </div>
-          </div>
+    </div>
   );
 };
-
-export default SearchBar;
+export default WeatherApp;
