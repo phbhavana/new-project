@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./SearchBar.css";
+import "./WeatherApp.css";
 const WeatherApp = () => {
   const [city, setCity] = useState<any>("");
   const [weather, setWeather] = useState<any>(null);
@@ -40,33 +40,31 @@ const WeatherApp = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <img src={require('../assets/images/clear.png').default} alt=""/>
+        <img src={require('../assets/images/search.png')} alt="search" onClick={handleButtonClick}/>
       </div>
-      <img src={require('../assets/images/clear.png').default} alt="" className="weather-icon"/>
+      <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>
       {error && <p className="error">{error}</p>}
-      <p className="temperature">{weather?.main.temp}C</p>
-      <p className="location">{weather?.name}london</p>
-      <p>{weather?.main.humidity}</p>
+      <p className="temperature">{weather?.main.temp}°C</p>
+      <p className="location">{weather?.name}</p>
+      <p>{weather?.weather[0].icon}</p>
       <div className="weather-data">
         <div className="col">
-          <img src={require('../assets/images/humidity.png').default} alt=""/>
+          <img src={require('../assets/images/humidity.png')} alt=""/>
           <div>
-            <p>91%</p>
+            <p>{weather?.main.humidity}%</p>
             <span>Humidity</span>
           </div>
         </div>
-      </div>
-      <div className="weather-data">
         <div className="col">
-          <img src={require('../assets/images/wind.png').default} alt=""/>
+          <img src={require('../assets/images/wind.png')} alt=""/>
           <div>
-            <p>3.6 km/h</p>
+            <p>{weather?.wind.speed}Km/ph</p>
             <span>Wind-speed</span>
           </div>
         </div>
       </div>
+      </div>
 
-    </div>
   );
 };
 export default WeatherApp;
