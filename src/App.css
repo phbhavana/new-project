@@ -1,4 +1,5 @@
-.search-bar-container {
+.container {
+  background-color: rgb(168, 168, 237);
   text-align: center;
   padding: 20%;
 }
