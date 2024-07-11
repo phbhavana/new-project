@@ -7,7 +7,7 @@ import WeatherApp from './Weather/SearchBar';
 function App() {
 
   return (
-      <div className="container">
+      <div className="app">
         <WeatherApp/>
     </div>
   );

@@ -40,7 +40,7 @@ const WeatherApp = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <img src={require('../assets/images/search.png').default} alt=""/>
+        <img src={require('../assets/images/clear.png').default} alt=""/>
       </div>
       <img src={require('../assets/images/clear.png').default} alt="" className="weather-icon"/>
       {error && <p className="error">{error}</p>}
