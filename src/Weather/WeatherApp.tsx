@@ -42,11 +42,14 @@ const WeatherApp = () => {
         />
         <img src={require('../assets/images/search.png')} alt="search" onClick={handleButtonClick}/>
       </div>
-      <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>
+      {weather?.main.temp <=25 &&
+      <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>}
+      {weather?.main.temp >25 &&
+      <img src='https://openweathermap.org/img/wn/01d@2x.png' alt="weather" className="weather-icon"/>}
       {error && <p className="error">{error}</p>}
       <p className="temperature">{weather?.main.temp}°C</p>
       <p className="location">{weather?.name}</p>
-      <p>{weather?.weather[0].icon}</p>
+
       <div className="weather-data">
         <div className="col">
           <img src={require('../assets/images/humidity.png')} alt=""/>
