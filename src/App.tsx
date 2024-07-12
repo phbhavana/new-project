@@ -1,7 +1,6 @@
 import React from 'react';
 import "./App.css";
-import WeatherApp from 'Weather/WeatherApp';
-import TabComponent from 'Navigation/TabComponent';
+import TabComponent from 'Tab/TabComponent';
 
 
 
