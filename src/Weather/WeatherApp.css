@@ -66,3 +66,11 @@
   width: 26px;
   margin-top: 10px;
 }
+.input:hover{
+  color: #0aaded;
+  box-shadow: 0px 0px 50px whitesmoke;
+}
+.img:hover{
+  color: white;
+  box-shadow: 0px 0px 50px whitesmoke;
+}

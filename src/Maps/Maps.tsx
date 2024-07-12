@@ -4,7 +4,7 @@ import React from 'react'
 export default function Maps() {
   const mapStyle={
     width:'100%',
-    height:'400px'
+    height:'650px'
   }
   const mapCenter={
     lat:12.956033,

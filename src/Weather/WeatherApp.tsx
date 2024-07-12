@@ -34,13 +34,13 @@ const WeatherApp = () => {
    
     <div className="weather">
       <div className="weather-container">
-        <input className=" "
+        <input className="input"
           type="text"
           placeholder="Enter city name"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <img src={require('../assets/images/search.png')} alt="search" onClick={handleButtonClick}/>
+        <img className="img" src={require('../assets/images/search.png')} alt="search" onClick={handleButtonClick}/>
       </div>
       {weather?.main.temp <=25 &&
       <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>}

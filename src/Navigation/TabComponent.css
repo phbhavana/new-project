@@ -8,4 +8,9 @@
     color: #230ee0;
     background: #ebfffc;
     font-size: 18px;
+    margin-left: 20px;
+}
+.button:hover{
+    color: orangered;
+    box-shadow: 0px 0px 50px greenyellow;
 }
