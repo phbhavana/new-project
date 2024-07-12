@@ -1,6 +1,8 @@
 import React from 'react';
 import "./App.css";
 import TabComponent from 'Tab/TabComponent';
+import Greet from 'components/props';
+import Connect from 'components/handling';
 
 
 
