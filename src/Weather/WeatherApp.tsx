@@ -31,7 +31,7 @@ const WeatherApp = ({setActive,setWeatherInfo}:any) => {
       setError("Please enter a city name.");
     }
   };
-  const state=weather?.main.temp;
+  
   return (
    
     <div className="weather">
@@ -44,15 +44,12 @@ const WeatherApp = ({setActive,setWeatherInfo}:any) => {
         />
         <img className="img" src={require('../assets/images/search.png')} alt="search" onClick={handleButtonClick}/>
       </div>
-      {state <=25 &&
-      <img src='https://openweathermap.org/img/wn/02d@2x.png' alt="weather" className="weather-icon"/>}
-      {(state >30) &&
-      <img src='https://openweathermap.org/img/wn/01d@2x.png' alt="weather" className="weather-icon"/>}
-      {(state >25 && state<30 ) &&
-      <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>}
+      
       {error && <p className="error">{error}</p>}
       {weather &&
-      <div><p className="temperature">{weather?.main.temp}°C</p>
+      <div>
+      <img src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`} alt="weather" className="weather-icon"/>
+      <p className="temperature">{weather?.main.temp}°C</p>
       <p className="location">{weather?.name}</p>
       <div>
       <button className="WeatherMap" onClick={()=>setActive("2")}>Show in Map</button>
