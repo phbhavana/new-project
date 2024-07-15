@@ -65,13 +65,15 @@ const WeatherApp = ({setActive,setWeatherInfo}:any) => {
       <button className="WeatherMap" onClick={()=>setActive("2")}>Show in Map</button>
       </div>
       <div className="App">
-      <button type="button" onClick={showModal} className="dialogueBox">Show in Popup</button>
+      <button type="button" onClick={showModal} className="dialogueButton">Show in Popup</button>
       <Modal show={show} handleClose={hideModal}>
         <div className="PopUp">
         <h1>Location:{weather?.name}</h1>
         <p>Temperature:{weather?.main.temp}°C</p>
         <p>Humidity:{weather?.main.humidity}%</p>
         <p>Wind Speed:{weather?.wind.speed}Km/ph</p>
+        <img src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`} alt="weather" className="weather-icon"/>
+
         </div>
       </Modal>
     </div>
