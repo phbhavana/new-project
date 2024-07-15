@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./WeatherApp.css";
+import Modal from "DialogueBox/Modal";
 const WeatherApp = ({setActive,setWeatherInfo}:any) => {
   const [city, setCity] = useState<any>("");
   const [weather, setWeather] = useState<any>(null);
   const [error, setError] = useState<String>("");
   const API_KEY = "34f19ded3d6d17325e99ccf9aceaa809";
+  const [show, setShow] = useState(false);
+
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
  
   const fetchWeatherData = async () => {
     console.log(city,'city');
@@ -54,6 +64,17 @@ const WeatherApp = ({setActive,setWeatherInfo}:any) => {
       <div>
       <button className="WeatherMap" onClick={()=>setActive("2")}>Show in Map</button>
       </div>
+      <div className="App">
+      <button type="button" onClick={showModal} className="dialogueBox">Show in Popup</button>
+      <Modal show={show} handleClose={hideModal}>
+        <div className="PopUp">
+        <h1>Location:{weather?.name}</h1>
+        <p>Temperature:{weather?.main.temp}°C</p>
+        <p>Humidity:{weather?.main.humidity}%</p>
+        <p>Wind Speed:{weather?.wind.speed}Km/ph</p>
+        </div>
+      </Modal>
+    </div>
        <div className="weather-data">
         <div className="col">
           <img src={require('../assets/images/humidity.png')} alt=""/>
@@ -70,7 +91,7 @@ const WeatherApp = ({setActive,setWeatherInfo}:any) => {
           </div>
         </div>
         </div>
-</div>}
+      </div>}
       </div>
 
   );
