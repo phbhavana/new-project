@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./WeatherApp.css";
-const WeatherApp = () => {
+const WeatherApp = ({setActive,setWeatherInfo}:any) => {
   const [city, setCity] = useState<any>("");
   const [weather, setWeather] = useState<any>(null);
   const [error, setError] = useState<String>("");
   const API_KEY = "34f19ded3d6d17325e99ccf9aceaa809";
+ 
   const fetchWeatherData = async () => {
     console.log(city,'city');
     try {
@@ -14,7 +15,7 @@ const WeatherApp = () => {
       );
       console.log("API response:", response.data);
       setWeather(response.data);
-      
+      setWeatherInfo(response.data);
       setError("");
     } catch (error) {
       
@@ -50,10 +51,13 @@ const WeatherApp = () => {
       {(state >25 && state<30 ) &&
       <img src='https://openweathermap.org/img/wn/03d@2x.png' alt="weather" className="weather-icon"/>}
       {error && <p className="error">{error}</p>}
-      <p className="temperature">{weather?.main.temp}°C</p>
+      {weather &&
+      <div><p className="temperature">{weather?.main.temp}°C</p>
       <p className="location">{weather?.name}</p>
-
-      <div className="weather-data">
+      <div>
+      <button className="WeatherMap" onClick={()=>setActive("2")}>Show in Map</button>
+      </div>
+       <div className="weather-data">
         <div className="col">
           <img src={require('../assets/images/humidity.png')} alt=""/>
           <div>
@@ -68,7 +72,8 @@ const WeatherApp = () => {
             <span>Wind-speed</span>
           </div>
         </div>
-      </div>
+        </div>
+</div>}
       </div>
 
   );

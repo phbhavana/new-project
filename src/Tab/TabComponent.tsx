@@ -6,9 +6,10 @@ import './TabComponent.css';
 
 const TabComponent= () => {
     const[active,setActive]=useState("1");
+    const[weatherInfo,setWeatherInfo]=useState();
     const handleTabClick =(tab:any)=>{
         setActive(tab);
-        
+    
     }
     return (
         <div>
@@ -20,11 +21,11 @@ const TabComponent= () => {
         <div>
             {active==="1" && 
             <div>
-                <WeatherApp/>
+                <WeatherApp setActive={setActive} setWeatherInfo={setWeatherInfo}/>
             </div>}
             {active==="2" && 
             <div>
-                <Maps/>
+                <Maps weatherInfo={weatherInfo}/>
             </div>}
         </div>
         </div>
